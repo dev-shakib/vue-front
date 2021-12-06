@@ -1429,11 +1429,9 @@ export default {
 				.catch(error => ({ error: JSON.stringify(error) }));
 		},
 		getCategories: async function(){
-	
-			await axios.get('http://127.0.0.1:8000/api/categories')
+			await axios.get( process.env.BASE_URL + '/categories')
 			.then((res) => {
-				// console.log(res.data.name);
-		 		this.categories  = res.data;
+				this.categories = res.data
 			})
 		}
 	}

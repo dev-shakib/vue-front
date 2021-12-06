@@ -1,4 +1,7 @@
 export default {
+    buildModules: [
+        '@nuxtjs/dotenv'
+    ],
     head: {
         titleTemplate: 'Molla - Multi-purpose eCommerce Vue Template',
         title: 'Molla - Multi-purpose eCommerce Vue Template',
