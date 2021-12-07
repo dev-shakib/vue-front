@@ -1265,6 +1265,16 @@
 			</div>
 		</div>
 
+		<div class="container product-group mb-lg-7 mb-4">
+			<div class="row">
+				<div class="col-md-3" >
+					<product-five v-for="product of products" :key="product.id" :product="product"></product-five>
+				</div>
+			</div>
+		</div>
+
+			
+
 		<div class="bg-white brand-section pt-5 pb-4">
 			<div class="container">
 				<div class="swiper-carousel brands-carousel">
@@ -1307,7 +1317,6 @@ import SpecialCollection from '~/components/partial/home/SpecialCollection';
 import TopCollection from '~/components/partial/home/TopCollection';
 import BlogSection from '~/components/partial/home/BlogSection';
 import NewsletterModal from '~/components/elements/modals/NewsletterModal';
-
 import Repository, { baseUrl } from '~/repositories/repository.js';
 import { attrFilter, catFilter } from '~/utilities/common';
 import {
@@ -1316,6 +1325,7 @@ import {
 } from '~/utilities/carousel';
 import { homeData } from '~/utilities/data';
 import axios from 'axios'
+import ProductFive from '~/components/elements/products/ProductFive.vue';
 
 export default {
 	components: {
@@ -1323,7 +1333,8 @@ export default {
 		TopCollection,
 		ElectronicsCollection,
 		FashionCollection,
-		BlogSection
+		BlogSection,
+		ProductFive
 	},
 	data: function() {
 		return {
@@ -1411,22 +1422,26 @@ export default {
 	methods: {
 		getProducts: async function() {
 			this.loaded = false;
-			await Repository.get(`${baseUrl}/demo26`)
-				.then(response => {
-					this.products = response.data.products;
-					this.electronics = catFilter(this.products, [
-						'electronics'
-					]);
-					this.newProducts = attrFilter(this.products, 'new');
-					this.featuredProducts = attrFilter(
-						this.products,
-						'featured'
-					);
-					this.topProducts = attrFilter(this.products, 'top');
-					this.blogs = response.data.blogs;
-					this.loaded = true;
-				})
-				.catch(error => ({ error: JSON.stringify(error) }));
+			// await Repository.get(`${baseUrl}/demo26`)
+			// 	.then(response => {
+			// 		this.products = response.data.products;
+			// 		this.electronics = catFilter(this.products, [
+			// 			'electronics'
+			// 		]);
+			// 		this.newProducts = attrFilter(this.products, 'new');
+			// 		this.featuredProducts = attrFilter(
+			// 			this.products,
+			// 			'featured'
+			// 		);
+			// 		this.topProducts = attrFilter(this.products, 'top');
+			// 		this.blogs = response.data.blogs;
+			// 		this.loaded = true;
+			// 	})
+			// 	.catch(error => ({ error: JSON.stringify(error) }));
+			await axios.get( process.env.BASE_URL + '/products')
+			.then((res) => {
+				this.products = res.data
+			})
 		},
 		getCategories: async function(){
 			await axios.get( process.env.BASE_URL + '/categories')

@@ -1,31 +1,32 @@
 <template>
     <div class="product product-4 text-center">
         <figure class="product-media">
-            <span class="product-label label-circle label-new" >New</span>
-            <span class="product-label label-circle label-sale" >Sale</span>
-            <span class="product-label label-circle label-top" >Top</span>
+            <span class="product-label label-circle label-new" v-if="product.new">New</span>
+            <span class="product-label label-circle label-sale" v-if="product.sale_price">Sale</span>
+            <span class="product-label label-circle label-top" v-if="product.top">Top</span>
             <span
                 class="product-label label-circle label-out"
+                v-if="product.stock === 0"
             >Out Of Stock</span>
 
-            <nuxt-link :to="'/product/default/'">
+            <nuxt-link :to="'/product/default/'+ product.slug">
                 <img
-                    v-lazy="`hello`"
+                    v-lazy="`${baseUrl}${product.sm_pictures[0].url}`"
                     alt="Product"
-                    :width="100"
-                    :height="100"
+                    :width="product.sm_pictures[0].width"
+                    :height="product.sm_pictures[0].height"
                     class="product-image"
                 />
                 <img
-                    v-lazy="`hello`"
+                    v-lazy="`${baseUrl}${product.sm_pictures[1].url}`"
                     alt="Product"
-                    :width="100"
-                    :height="100"
+                    :width="product.sm_pictures[1].width"
+                    :height="product.sm_pictures[1].height"
                     class="product-image-hover"
-                    v-if="true"
+                    v-if="product.sm_pictures[1]"
                 />
             </nuxt-link>
-            <!-- <div class="product-action-vertical" v-if="product.stock !== 0">
+            <div class="product-action-vertical" v-if="product.stock !== 0">
                 <nuxt-link
                     to="/shop/wishlist"
                     class="btn-product-icon btn-wishlist btn-expandable added-to-wishlist"
@@ -43,8 +44,8 @@
                 >
                     <span>add to wishlist</span>
                 </a>
-            </div> -->
-            <!-- <div class="product-action" v-if="product.stock !== 0">
+            </div>
+            <div class="product-action" v-if="product.stock !== 0">
                 <nuxt-link
                     :to="'/product/default/' + product.slug"
                     class="btn-product btn-cart btn-select"
@@ -59,10 +60,10 @@
                 >
                     <span>add to cart</span>
                 </button>
-            </div> -->
+            </div>
         </figure>
 
-        <!-- <div class="product-body">
+        <div class="product-body">
             <div class="product-cat">
                 <span v-for="(cat, index) of product.category" :key="index">
                     <nuxt-link
@@ -105,7 +106,7 @@
                     </a>
                 </div>
             </div>
-        </div> -->
+        </div>
     </div>
 </template>
 <script>
@@ -123,42 +124,42 @@ export default {
         };
     },
     computed: {
-        // ...mapGetters('cart', ['canAddToCart']),
-        // ...mapGetters('wishlist', ['isInWishlist']),
-        // ...mapGetters('compare', ['isInCompare'])
+        ...mapGetters('cart', ['canAddToCart']),
+        ...mapGetters('wishlist', ['isInWishlist']),
+        ...mapGetters('compare', ['isInCompare'])
     },
 
     created: function() {
-        // let min = this.minPrice;
-        // let max = this.maxPrice;
-        // this.product.variants.map(item => {
-        //     if (min > item.price) min = item.price;
-        //     if (max < item.price) max = item.price;
-        // }, []);
+        let min = this.minPrice;
+        let max = this.maxPrice;
+        this.product.variants.map(item => {
+            if (min > item.price) min = item.price;
+            if (max < item.price) max = item.price;
+        }, []);
 
-        // if (this.product.variants.length == 0) {
-        //     min = this.product.sale_price
-        //         ? this.product.sale_price
-        //         : this.product.price;
-        //     max = this.product.price;
-        // }
+        if (this.product.variants.length == 0) {
+            min = this.product.sale_price
+                ? this.product.sale_price
+                : this.product.price;
+            max = this.product.price;
+        }
 
-        // this.minPrice = min;
-        // this.maxPrice = max;
+        this.minPrice = min;
+        this.maxPrice = max;
     },
     methods: {
-        // ...mapActions('cart', ['addToCart']),
-        // ...mapActions('wishlist', ['addToWishlist']),
-        // ...mapActions('compare', ['addToCompare']),
-        // quickView: function() {
-        //     this.$modal.show(
-        //         () => import('~/components/elements/modals/QuickViewModal'),
-        //         {
-        //             product: this.product
-        //         },
-        //         { width: '1030', height: 'auto', adaptive: true }
-        //     );
-        // }
+        ...mapActions('cart', ['addToCart']),
+        ...mapActions('wishlist', ['addToWishlist']),
+        ...mapActions('compare', ['addToCompare']),
+        quickView: function() {
+            this.$modal.show(
+                () => import('~/components/elements/modals/QuickViewModal'),
+                {
+                    product: this.product
+                },
+                { width: '1030', height: 'auto', adaptive: true }
+            );
+        }
     }
 };
 </script>
