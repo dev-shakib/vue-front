@@ -69,6 +69,7 @@
 	width: 300px;
 	height: 300px;
 	object-fit: cover;
+	padding: 0 !important;
 }
 
 .product-image-hover {
@@ -80,6 +81,7 @@
 	height: 300px;
 	object-fit: cover;
 	transition: opacity .3s ease;
+	padding: 0 !important;
 }
 
 .product:hover .product-image-hover {

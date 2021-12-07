@@ -1265,11 +1265,13 @@
 			</div>
 		</div>
 
-		<div class="container product-group mb-lg-7 mb-4">
+		<div class="container">
+			<div class="products">
 			<div class="row">
-				<div class="col-md-3" v-for="product of products" :key="product.id">
+				<div class="col-6 col-md-4 col-lg-3 col-xl-5col mb-n4" v-for="product of products" :key="product.id">
 					<product-five  :product="product"></product-five>
 				</div>
+			</div>
 			</div>
 		</div>
 
