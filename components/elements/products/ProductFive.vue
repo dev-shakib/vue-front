@@ -10,19 +10,16 @@
 
             <nuxt-link :to="'/product/default/'">
                 <img
-                    v-lazy="`hello`"
-                    alt="Product"
-                    :width="100"
-                    :height="100"
+                    v-lazy="`${baseUrl}/${product.photo}`"
+                    :alt="product.name"
                     class="product-image"
                 />
                 <img
-                    v-lazy="`hello`"
-                    alt="Product"
+                    v-lazy="`${baseUrl}/${product.photo}`"
+                    :alt="product.name"
                     :width="100"
                     :height="100"
                     class="product-image-hover"
-                    v-if="true"
                 />
             </nuxt-link>
             <!-- <div class="product-action-vertical" v-if="product.stock !== 0">
@@ -117,7 +114,7 @@ export default {
     },
     data: function() {
         return {
-            baseUrl: baseUrl,
+            baseUrl: process.env.APP_URL,
             maxPrice: 0,
             minPrice: 99999
         };
@@ -159,6 +156,9 @@ export default {
         //         { width: '1030', height: 'auto', adaptive: true }
         //     );
         // }
+        getImage: function(data){
+            return data.photo;
+        }
     }
 };
 </script>

@@ -1267,8 +1267,8 @@
 
 		<div class="container product-group mb-lg-7 mb-4">
 			<div class="row">
-				<div class="col-md-3" >
-					<product-five v-for="product of products" :key="product.id" :product="product"></product-five>
+				<div class="col-md-3" v-for="product of products" :key="product.id">
+					<product-five  :product="product"></product-five>
 				</div>
 			</div>
 		</div>
@@ -1413,7 +1413,7 @@ export default {
 						{ width: '970', height: 'auto', adaptive: true }
 					);
 				}
-			}, 8000);
+			}, 80000);
 
 		}
 		this.getCategories();	
@@ -1440,13 +1440,15 @@ export default {
 			// 	.catch(error => ({ error: JSON.stringify(error) }));
 			await axios.get( process.env.BASE_URL + '/products')
 			.then((res) => {
-				this.products = res.data
+				this.products = res.data;
+				
 			})
 		},
 		getCategories: async function(){
 			await axios.get( process.env.BASE_URL + '/categories')
 			.then((res) => {
 				this.categories = res.data
+				
 			})
 		}
 	}

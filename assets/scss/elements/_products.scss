@@ -66,8 +66,9 @@
 
 .product-image {
 	display: block;
-	width: 100%;
-	height: auto;
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
 }
 
 .product-image-hover {
@@ -75,8 +76,9 @@
 	left: 0;
 	top: 0;
 	opacity: 0;
-	width: 100%;
-	height: auto;
+	width: 300px;
+	height: 300px;
+	object-fit: cover;
 	transition: opacity .3s ease;
 }
 
