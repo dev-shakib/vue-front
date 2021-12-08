@@ -13,16 +13,14 @@
                     class="product-image fade-in"
                     :data-src="`${baseUrl}/${product.photo}`"
                     v-lazy="`${baseUrl}/${product.photo}`"
-                    width="300"
-                    height="300" />
+                />
                 <img
                     alt="Product"
                     class="product-image-hover"
                     :data-src="`${baseUrl}/${product.photo}`"
-                    v-lazy="`${baseUrl}/${product.photo}`"
-                    width="300"
-                    height="300"
-            /></a>
+                    v-lazy="`${baseUrl}/${product.photo}`" 
+                />
+            </a>
             <div class="product-action-vertical">
                 <a
                     href="javascript:;"

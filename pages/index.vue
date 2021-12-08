@@ -1266,17 +1266,20 @@
 		</div>
 
 		<div class="container">
-			<div class="products">
-			<div class="row">
-				<div class="col-6 col-md-4 col-lg-3 col-xl-5col mb-n4" v-for="product of products" :key="product.id">
-					<product-five  :product="product"></product-five>
-				</div>
+
+			<div class="heading heading-center">
+				<h2 class="title">Top Selling Products</h2>
 			</div>
+			<div class="products">
+				<div class="row">
+					<div class="col-6 col-md-4 col-lg-3 col-xl-5col mb-n4" v-for="product of products" :key="product.id">
+						<product-five  :product="product"></product-five>
+					</div>
+				</div>
 			</div>
 		</div>
 
 			
-
 		<div class="bg-white brand-section pt-5 pb-4">
 			<div class="container">
 				<div class="swiper-carousel brands-carousel">

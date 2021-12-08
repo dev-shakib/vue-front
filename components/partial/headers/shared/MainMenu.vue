@@ -1,7 +1,7 @@
 <template>
     <nav class="main-nav">
         <ul class="menu sf-arrows">
-            <li class="megamenu-container" :class="{active: current=='/'}">
+            <!-- <li class="megamenu-container" :class="{active: current=='/'}">
                 <nuxt-link to="/" class="sf-with-ul">Home</nuxt-link>
 
                 <div class="megamenu demo">
@@ -332,267 +332,11 @@
                         </div>
                     </div>
                 </div>
-            </li>
-            <li :class="{active: current=='shop'}">
-                <nuxt-link to="/shop/sidebar/list" class="sf-with-ul">Shop</nuxt-link>
+            </li> -->
+            <li v-for="item of topbaritems" :key="item.id" :class="{active: current=='blog'}">
+                <nuxt-link to="/blog/classic" class="">{{ item.name }}</nuxt-link>
+            </li> 
 
-                <div class="megamenu megamenu-md">
-                    <div class="row no-gutters">
-                        <div class="col-md-8">
-                            <div class="menu-col">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="menu-title">Shop with sidebar</div>
-
-                                        <ul>
-                                            <li>
-                                                <nuxt-link to="/shop/sidebar/list">Shop List</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link
-                                                    to="/shop/sidebar/2cols"
-                                                >Shop Grid 2 Columns</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link
-                                                    to="/shop/sidebar/3cols"
-                                                >Shop Grid 3 Columns</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link
-                                                    to="/shop/sidebar/4cols"
-                                                >Shop Grid 4 Columns</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link to="/shop/market">
-                                                    <span>
-                                                        Shop Market
-                                                        <span class="tip tip-new">New</span>
-                                                    </span>
-                                                </nuxt-link>
-                                            </li>
-                                        </ul>
-
-                                        <div class="menu-title">Shop no sidebar</div>
-
-                                        <ul>
-                                            <li>
-                                                <nuxt-link to="/shop/nosidebar/boxed">
-                                                    <span>
-                                                        Shop Boxed No Sidebar
-                                                        <span
-                                                            class="tip tip-hot"
-                                                        >Hot</span>
-                                                    </span>
-                                                </nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link
-                                                    to="/shop/nosidebar/fullwidth"
-                                                >Shop Fullwidth No Sidebar</nuxt-link>
-                                            </li>
-                                        </ul>
-                                    </div>
-
-                                    <div class="col-md-6">
-                                        <div class="menu-title">Product Category</div>
-
-                                        <ul>
-                                            <li>
-                                                <nuxt-link
-                                                    to="/shop/category/boxed"
-                                                >Product Category Boxed</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link to="/shop/category/fullwidth">
-                                                    <span>
-                                                        Product Category Fullwidth
-                                                        <span
-                                                            class="tip tip-new"
-                                                        >New</span>
-                                                    </span>
-                                                </nuxt-link>
-                                            </li>
-                                        </ul>
-                                        <div class="menu-title">Shop Pages</div>
-
-                                        <ul>
-                                            <li>
-                                                <nuxt-link to="/shop/cart">Cart</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link to="/shop/checkout">Checkout</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link to="/shop/wishlist">Wishlist</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <nuxt-link to="/shop/dashboard">My Account</nuxt-link>
-                                            </li>
-                                            <li>
-                                                <a href="#">Lookbook</a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-4">
-                            <div class="banner banner-overlay">
-                                <nuxt-link to="/shop/sidebar/list" class="banner banner-menu">
-                                    <img
-                                        v-lazy="'./images/menu/banner-1.jpg'"
-                                        alt="Banner"
-                                        width="218"
-                                        height="314"
-                                    />
-
-                                    <div class="banner-content banner-content-top">
-                                        <div class="banner-title text-white">
-                                            Last
-                                            <br />Chance
-                                            <br />
-                                            <span>
-                                                <strong>Sale</strong>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </nuxt-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li :class="{active: current=='product'}">
-                <nuxt-link
-                    to="/product/default/dark-yellow-lace-cut-out-swing-dress"
-                    class="sf-with-ul"
-                >Product</nuxt-link>
-
-                <div class="megamenu megamenu-sm">
-                    <div class="row no-gutters">
-                        <div class="col-md-6">
-                            <div class="menu-col">
-                                <div class="menu-title">Product Details</div>
-
-                                <ul>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/default/dark-yellow-lace-cut-out-swing-dress"
-                                        >Default</nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/centered/beige-ring-handle-circle-cross-body-bag"
-                                        >Centered</nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/extended/yellow-tie-strap-block-heel-sandals"
-                                        >
-                                            <span>
-                                                Extended Info
-                                                <span class="tip tip-new">New</span>
-                                            </span>
-                                        </nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/gallery/beige-metal-hoop-tote-bag"
-                                        >Gallery</nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/sticky/brown-faux-fur-longline-coat"
-                                        >Sticky Info</nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/sidebar/beige-v-neck-button-cardigan"
-                                        >Boxed With Sidebar</nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/fullwidth/black-faux-leather-chain-trim-sandals"
-                                        >Full Width</nuxt-link>
-                                    </li>
-                                    <li>
-                                        <nuxt-link
-                                            to="/product/masonry/black-denim-dungaree-dress"
-                                        >Masonry Sticky Info</nuxt-link>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="banner banner-overlay">
-                                <nuxt-link to="/shop/sidebar/list">
-                                    <img
-                                        v-lazy="'./images/menu/banner-2.jpg'"
-                                        alt="Banner"
-                                        width="218"
-                                        height="310"
-                                    />
-
-                                    <div class="banner-content banner-content-bottom">
-                                        <div class="banner-title text-white">
-                                            New Trends
-                                            <br />
-                                            <span>
-                                                <strong>spring 2021</strong>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </nuxt-link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
-            <li :class="{active: current=='pages'}">
-                <a href="javascript:;" class="sf-with-ul">Pages</a>
-
-                <ul>
-                    <li>
-                        <nuxt-link to="/pages/about" class="sf-with-ul">About</nuxt-link>
-
-                        <ul>
-                            <li>
-                                <nuxt-link to="/pages/about">About 01</nuxt-link>
-                            </li>
-                            <li>
-                                <nuxt-link to="/pages/about-2">About 02</nuxt-link>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <nuxt-link to="/pages/contact" class="sf-with-ul">Contact</nuxt-link>
-
-                        <ul>
-                            <li>
-                                <nuxt-link to="/pages/contact">Contact 01</nuxt-link>
-                            </li>
-                            <li>
-                                <nuxt-link to="/pages/contact-2">Contact 02</nuxt-link>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <nuxt-link to="/pages/login">Login</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/pages/faq">FAQs</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/pages/404">Error 404</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/pages/coming-soon">Coming Soon</nuxt-link>
-                    </li>
-                </ul>
-            </li>
             <li :class="{active: current=='blog'}">
                 <nuxt-link to="/blog/classic" class="sf-with-ul">Blog</nuxt-link>
                 <ul>
@@ -672,58 +416,14 @@
                     </li>
                 </ul>
             </li>
-            <li :class="{active: current=='elements'}">
-                <nuxt-link to="/elements" class="sf-with-ul">Elements</nuxt-link>
 
-                <ul>
-                    <li>
-                        <nuxt-link to="/elements/products">Products</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/typography">Typography</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/titles">Titles</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/banners">Banners</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/categories">Product Category</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/video-banners">Video Banners</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/buttons">Buttons</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/accordions">Accordions</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/tabs">Tabs</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/testimonials">Testimonials</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/blog-posts">Blog Posts</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/portfolio">Portfolio</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/cta">Call to Action</nuxt-link>
-                    </li>
-                    <li>
-                        <nuxt-link to="/elements/icon-boxes">Icon Boxes</nuxt-link>
-                    </li>
-                </ul>
-            </li>
         </ul>
     </nav>
 </template>
 <script>
+
+import axios from 'axios';
+
 export default {
     computed: {
         current: function() {
@@ -735,6 +435,14 @@ export default {
             return '/';
         }
     },
+    data: function(){
+        return {
+            topbaritems: [],
+        }
+    },
+    mounted: function () {
+        this.getTopmenuItems()
+    },
     methods: {
         viewAllDemos: function(e) {
             var list = document.querySelectorAll('.demo-list .hidden');
@@ -743,6 +451,12 @@ export default {
             }
 
             e.currentTarget.parentElement.classList.add('d-none');
+        },
+        getTopmenuItems(){
+            axios.get( process.env.BASE_URL + '/get-topbar')
+                .then((res) => {
+                    this.topbaritems = res.data;
+            })
         }
     }
 };
