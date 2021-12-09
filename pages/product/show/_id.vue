@@ -20,7 +20,7 @@
                                     <div class="entry-summary2"></div>
                                 </div>
                             </div>
-                            <!-- <detail-one :product="product" v-if="product"></detail-one> -->
+                            <detail-one :product="product" v-if="product"></detail-one>
                         </div>
                     </div>
                 </div>
