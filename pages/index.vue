@@ -1446,7 +1446,7 @@ export default {
 			await axios.get( process.env.BASE_URL + '/products')
 			.then((res) => {
 				this.products = res.data;
-				
+				// this.loaded = true;
 			})
 		},
 		getCategories: async function(){

@@ -5,8 +5,8 @@
             <span class="product-label label-circle label-sale">Sale</span>
             <span class="product-label label-circle label-top">Top</span>
             <!---->
-            <a
-                href="/vue/molla/demo-1/product/default/butler-stool-ladder"
+            <nuxt-link
+                :to="`/product/show/${product.id}`"
                 class=""
                 ><img
                     alt="Product"
@@ -20,7 +20,7 @@
                     :data-src="`${baseUrl}/${product.photo}`"
                     v-lazy="`${baseUrl}/${product.photo}`" 
                 />
-            </a>
+            </nuxt-link>
             <div class="product-action-vertical">
                 <a
                     href="javascript:;"
@@ -40,7 +40,7 @@
             <div class="product-cat">
                 <span
                     ><a
-                        href="/vue/molla/demo-1/shop/sidebar/list?category=furniture"
+                        href=""
                         class=""
                         >{{product.category_id}}</a
                     >

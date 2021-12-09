@@ -2,16 +2,16 @@
     <div class="product-gallery product-gallery-vertical" v-if="product">
         <div class="row m-0">
             <figure class="product-main-image">
-                <span class="product-label label-new" v-if="product.new">New</span>
+                <!-- <span class="product-label label-new" v-if="product.new">New</span>
                 <span class="product-label label-sale" v-if="product.sale_price">Sale</span>
                 <span class="product-label label-top" v-if="product.top">Top</span>
-                <span class="product-label label-out" v-if="product.stock === 0">Out Of Stock</span>
+                <span class="product-label label-out" v-if="product.stock === 0">Out Of Stock</span> -->
                 <img
                     id="product-zoom"
-                    v-lazy="`${baseUrl}${product.pictures[currentIndex].url}`"
+                    v-lazy="`${baseUrl}/${product.photo}`"
                     alt="product"
-                    :width="product.pictures[currentIndex].width"
-                    :height="product.pictures[currentIndex].height"
+                    :width="200"
+                    :height="200"
                 />
 
                 <a
@@ -29,14 +29,14 @@
                     class="product-gallery-item h-100 h-lg-auto carousel-dot"
                     :class="{active: currentIndex== index}"
                     href="#"
-                    v-for="(smPicture, index) in product.sm_pictures"
+                   
                     :key="index"
                     @click.prevent="changePicture(index)"
                 >
                     <img
-                        :src="`${baseUrl}${smPicture.url}`"
-                        :width="smPicture.width"
-                        :height="smPicture.height"
+                        :src="`${baseUrl}/${product.photo}`"
+                        :width="100"
+                        :height="100"
                         alt="product side"
                     />
                 </a>
@@ -64,34 +64,24 @@ export default {
         LightBox
     },
     props: {
-        product: {
-            type: Object,
-            default: function() {
-                return {
-                    sm_pictures: [],
-                    pictures: []
-                };
-            }
-        }
+        product: Object
     },
     data: function() {
         return {
-            baseUrl: baseUrl,
+            // singleProduct: this.product,
+            baseUrl: process.env.APP_URL,
             currentIndex: 0
         };
     },
     computed: {
         lightBoxMedia: function() {
-            return this.product.pictures.reduce((acc, cur) => {
                 return [
-                    ...acc,
                     {
-                        thumb: `${baseUrl}${cur.url}`,
-                        src: `${baseUrl}${cur.url}`,
+                        thumb: `${process.env.APP_URL}/${this.product.photo}`,
+                        src: `${process.env.APP_URL}/${this.product.photo}`,
                         caption: this.product.name
                     }
                 ];
-            }, []);
         }
     },
     methods: {

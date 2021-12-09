@@ -2,10 +2,10 @@
     <div class="product-gallery" v-if="product">
         <div class="row m-0">
             <figure class="product-main-image">
-                <span class="product-label label-new" v-if="product.new">New</span>
+                <!-- <span class="product-label label-new" v-if="product.new">New</span>
                 <span class="product-label label-sale" v-if="product.sale_price">Sale</span>
                 <span class="product-label label-top" v-if="product.top">Top</span>
-                <span class="product-label label-out" v-if="product.stock === 0">Out Of Stock</span>
+                <span class="product-label label-out" v-if="product.stock === 0">Out Of Stock</span> -->
                 <img
                     id="product-zoom"
                     v-lazy="`${baseUrl}${product.pictures[currentIndex].url}`"
@@ -81,26 +81,26 @@ export default {
         };
     },
     computed: {
-        lightBoxMedia: function() {
-            return this.product.pictures.reduce((acc, cur) => {
-                return [
-                    ...acc,
-                    {
-                        thumb: `${baseUrl}${cur.url}`,
-                        src: `${baseUrl}${cur.url}`,
-                        caption: this.product.name
-                    }
-                ];
-            }, []);
-        }
+        // lightBoxMedia: function() {
+        //     return this.product.pictures.reduce((acc, cur) => {
+        //         return [
+        //             ...acc,
+        //             {
+        //                 thumb: `${baseUrl}${cur.url}`,
+        //                 src: `${baseUrl}${cur.url}`,
+        //                 caption: this.product.name
+        //             }
+        //         ];
+        //     }, []);
+        // }
     },
     methods: {
-        changePicture: function(index) {
-            this.currentIndex = index;
-        },
-        openLightBox: function() {
-            this.$refs.lightbox.showImage(this.currentIndex);
-        }
+        // changePicture: function(index) {
+        //     this.currentIndex = index;
+        // },
+        // openLightBox: function() {
+        //     this.$refs.lightbox.showImage(this.currentIndex);
+        // }
     }
 };
 </script>
