@@ -66,7 +66,9 @@
             </div>
         </div>
         <div class="product-action">
-            <button class="btn-product btn-cart">
+            <button
+                @click.prevent="addToCart({product: product})"
+                class="btn-product btn-cart">
                 <span>add to cart</span>
             </button>
         </div>
@@ -88,7 +90,7 @@ export default {
         };
     },
     computed: {
-        // ...mapGetters('cart', ['canAddToCart']),
+        ...mapGetters('cart', ['canAddToCart']),
         // ...mapGetters('wishlist', ['isInWishlist']),
         // ...mapGetters('compare', ['isInCompare'])
     },
@@ -110,7 +112,7 @@ export default {
         // this.maxPrice = max;
     },
     methods: {
-        // ...mapActions('cart', ['addToCart']),
+        ...mapActions('cart', ['addToCart']),
         // ...mapActions('wishlist', ['addToWishlist']),
         // ...mapActions('compare', ['addToCompare']),
         // quickView: function() {

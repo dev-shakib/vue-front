@@ -8,27 +8,27 @@
             <p>Cart</p>
         </nuxt-link>
 
-        <div class="dropdown-menu dropdown-menu-right" v-if="cartList.length > 0" key="hasCart">
+        <div class="dropdown-menu dropdown-menu-right" key="hasCart">
             <div class="dropdown-cart-products">
                 <div class="product" v-for="(product, index) in cartList" :key="index">
                     <div class="product-cart-details">
                         <h4 class="product-title">
-                            <nuxt-link :to="'/product/default/' + product.slug">{{ product.name }}</nuxt-link>
+                            <nuxt-link :to="'/product/default/' + product.id">{{ product.name }}</nuxt-link>
                         </h4>
 
-                        <span class="cart-product-info">
+                        <!-- <span class="cart-product-info">
                             <span class="cart-product-qty">{{ product.qty }}</span>
                             x ${{ product.sale_price ? product.sale_price.toFixed(2): product.price.toFixed(2) }}
-                        </span>
+                        </span> -->
                     </div>
 
                     <figure class="product-image-container">
-                        <nuxt-link :to="'/product/default/' + product.slug" class="product-image">
+                        <nuxt-link :to="'/product/default/' + product.id" class="">
                             <img
-                                v-lazy="`${baseUrl}${product.sm_pictures[0].url}`"
+                                v-lazy="`${baseUrl}/${product.photo}`"
                                 alt="product"
-                                :width="product.sm_pictures[0].width"
-                                :height="product.sm_pictures[0].height"
+                                :width="50"
+                                :height="50"
                             />
                         </nuxt-link>
                     </figure>
@@ -57,9 +57,9 @@
                 </nuxt-link>
             </div>
         </div>
-        <div class="dropdown-menu dropdown-menu-right" v-else key="noCart">
+        <!-- <div class="dropdown-menu dropdown-menu-right">
             <p class="text-center">No products in the cart.</p>
-        </div>
+        </div> -->
     </div>
 </template>
 <script>
@@ -69,7 +69,7 @@ import { baseUrl } from '~/repositories/repository';
 export default {
     data: function() {
         return {
-            baseUrl: baseUrl
+            baseUrl: process.env.APP_URL
         };
     },
     computed: {
