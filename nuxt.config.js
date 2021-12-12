@@ -124,7 +124,7 @@ export default {
     pageTransition: 'page',
 
     build: {
-        publicPath: 'https://d-themes.com/vue/molla/demo-26'
+        // publicPath: 'https://d-themes.com/vue/molla/demo-26'
     },
 
     generate: {
