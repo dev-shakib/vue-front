@@ -1,4 +1,8 @@
 export default {
+    target: 'static',
+    router: {
+      base: '/vue-front/'
+    },
     buildModules: [
         '@nuxtjs/dotenv'
     ],
