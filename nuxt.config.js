@@ -120,7 +120,7 @@ export default {
     pageTransition: 'page',
 
     build: {
-        // publicPath: 'https://demo.com'
+        publicPath: 'https://61b5f7cf1d0013000892e132--infallible-gates-15458c.netlify.app/'
     },
 
     generate: {
