@@ -120,7 +120,7 @@ export default {
     pageTransition: 'page',
 
     build: {
-        publicPath: 'https://demo.com'
+        // publicPath: 'https://demo.com'
     },
 
     generate: {
