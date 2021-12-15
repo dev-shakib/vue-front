@@ -37,25 +37,25 @@
                                             <div class="product">
                                                 <figure class="product-media">
                                                     <nuxt-link
-                                                        :to="'/product/default/' + product.slug"
+                                                        :to="'/product/default/' + product.id"
                                                     >
                                                         <img
-                                                            v-lazy="`${baseUrl}${product.sm_pictures[0].url}`"
+                                                            v-lazy="`${baseUrl}/${product.photo}`"
                                                             alt="Product"
-                                                            :width="product.sm_pictures[0].width"
-                                                            :height="product.sm_pictures[0].height"
+                                                            :width="100"
+                                                            :height="100"
                                                         />
                                                     </nuxt-link>
                                                 </figure>
 
                                                 <h3 class="product-title">
                                                     <nuxt-link
-                                                        :to="'/product/default/' + product.slug"
+                                                        :to="'/product/default/' + product.id"
                                                     >{{ product.name }}</nuxt-link>
                                                 </h3>
                                             </div>
                                         </td>
-                                        <td class="price-col">${{ product.price.toFixed(2) }}</td>
+                                        <td class="price-col">${{ product.price }}</td>
                                         <td class="quantity-col">
                                             <quantity-input
                                                 :product="product"
@@ -63,7 +63,7 @@
                                                 class="cart-product-quantity"
                                             ></quantity-input>
                                         </td>
-                                        <td class="total-col">${{ product.sum.toFixed(2) }}</td>
+                                        <td class="total-col">${{ product.sum }}</td>
                                         <td class="remove-col">
                                             <button
                                                 @click.prevent="removeFromCart({product: product})"
@@ -234,7 +234,6 @@
 import { mapGetters, mapActions, mapMutations } from 'vuex';
 import PageHeader from '~/components/elements/PageHeader';
 import QuantityInput from '~/components/elements/QuantityInput';
-import { baseUrl } from '~/repositories/repository';
 
 export default {
     components: {
@@ -244,7 +243,7 @@ export default {
     data: function() {
         return {
             cartItems: [],
-            baseUrl: baseUrl
+            baseUrl: process.env.APP_URL
         };
     },
     computed: {
