@@ -683,32 +683,31 @@
 							<div class="swiper-carousel swiper-1">
 								<div v-swiper:swiper1="carouselSetting1">
 									<div class="swiper-wrapper">
-										<div class="swiper-slide">
+										<div class="swiper-slide" v-for="slider in sliders" :key="slider.id">
 											<div
 												class="intro-slide bg-image d-flex align-items-center"
 												style="background-color:#e8eded;"
-												v-lazy:background-image="'./images/home/slider/slide-1.jpg'"
+												v-lazy:background-image="`${baseUrl}/${slider.image}`"
 											>
 												<div class="intro-content">
 													<h3 class="intro-subtitle font-size-normal text-dark font-weight-normal text-uppercase">
 														Trade-In Offer</h3>
 
-													<h1 class="intro-title text-dark font-weight-bold mb-0">
-														Multi-motion
-														<br>Food Processor
+													<h1 class="intro-title text-dark font-weight-bold mb-0" v-html="slider.title">
+														
 													</h1>
 
-													<div class="intro-price text-dark font-weight-normal">
+													<!-- <div class="intro-price text-dark font-weight-normal">
 														<sup class="font-weight-normal">from
 															<span class="text-primary font-weight-normal">$</span>
 														</sup>
 														<span class="text-primary font-weight-bold">199
 															<sup class="font-weight-normal">.99</sup>
 														</span>
-													</div>
+													</div> -->
 
 													<nuxt-link
-														to="/shop/sidebar/4cols"
+														:to="slider.action"
 														class="btn btn-primary text-uppercase text-dark"
 													>
 														<span>Shop Now</span>
@@ -718,7 +717,7 @@
 
 											</div>
 										</div>
-										<div class="swiper-slide">
+										<!-- <div class="swiper-slide">
 											<div
 												class="intro-slide bg-image d-flex align-items-center"
 												style="background-color:#e8eded;"
@@ -790,7 +789,7 @@
 												</div>
 
 											</div>
-										</div>
+										</div> -->
 									</div>
 								</div>
 								<div class="swiper-dots swiper-dots-inner"></div>
@@ -1344,6 +1343,7 @@ export default {
 	data: function() {
 		return {
 			loaded: false,
+			baseUrl: process.env.APP_URL,
 			categories: [],
 			products: [],
 			topProducts: [],
@@ -1351,6 +1351,7 @@ export default {
 			featuredProducts: [],
 			electronics: [],
 			blogs: [],
+			sliders: [],
 			carouselSetting1: {
 				...carouselSettingSingle,
 				pagination: {
@@ -1406,6 +1407,7 @@ export default {
 		...mapGetters('demo', ['newsletterShow'])
 	},
 	created: function() {
+		this.getSlider();
 		this.getProducts();
 	},
 	mounted: function() {
@@ -1425,6 +1427,13 @@ export default {
 		
 	},
 	methods: {
+		getSlider: async function () {
+			axios.get(process.env.BASE_URL + '/get-slider').then(data => {
+				// console.log(data.data);
+				this.sliders = data.data;
+			});
+		},
+
 		getProducts: async function() {
 			this.loaded = false;
 			// await Repository.get(`${baseUrl}/demo26`)
