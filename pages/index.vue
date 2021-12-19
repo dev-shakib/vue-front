@@ -693,9 +693,7 @@
 													<h3 class="intro-subtitle font-size-normal text-dark font-weight-normal text-uppercase">
 														Trade-In Offer</h3>
 
-													<h1 class="intro-title text-dark font-weight-bold mb-0" v-html="slider.title">
-														
-													</h1>
+													<h1 class="intro-title text-light font-weight-bold mb-0" v-html="slider.title"></h1>
 
 													<!-- <div class="intro-price text-dark font-weight-normal">
 														<sup class="font-weight-normal">from
